@@ -12,11 +12,13 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
+    // 아이디 중복 체크
     public boolean isUserIdUnique(String userId) {
         User existingUser = userRepository.findByUserId(userId);
         return existingUser == null;
     }
 
+    // 회원 가입
     public void signupUser(User user){
         //  사용자에게 기본적으로 일반 사용자 권한 할당
         user.setRole(UserRole.USER);

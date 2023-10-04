@@ -1,16 +1,25 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Home</title>
+    <title>홈</title>
 </head>
 <body>
-<div class="container">
-    <p>메인 화면</p>
-    <div>
-        <a href="/signup">회원가입</a>
-        <a href="/login">로그인</a>
-    </div>
+<h2>환영합니다!</h2>
+
+<!-- Spring Security의 Authentication 객체를 통해 로그인 여부를 확인합니다. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>홈</title>
+</head>
+<body>
+<div>
+    <p>메인 페이지 입니다.</p>
+    <a sec:authorize="isAnonymous()" th:href="@{/login}">로그인</a>
+    <a sec:authorize="isAuthenticated()" th:href="@{/logout}">로그아웃</a>
+    <a href="/signup">회원가입</a>
 </div>
 </body>
 </html>

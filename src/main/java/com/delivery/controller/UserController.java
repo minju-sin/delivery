@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequiredArgsConstructor // 의존관계 관련해 필요한 어노테이션
 public class UserController {
     @Autowired
-    private UserService userService;
+    private UserService userService; // 사용자 서비스 (데이터베이스에서 사용자 정보를 가져옴)
 
     // 메인 페이지
     @GetMapping("/")
