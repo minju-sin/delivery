@@ -15,8 +15,8 @@ import lombok.Setter;
 @NoArgsConstructor  //  기본 생성자 만들어 줌
 @Entity //  DB 테이블 역할
 public class User {
-    @Id
-    @Column(nullable = false, length = 50)   //  반드시 값을 가져야할 때 사용
+    @Id //  primary key
+    @Column(nullable = false, length = 50, unique = true)   //  반드시 값을 가져야할 때 사용
     private String userId;  //  아이디(학번)
 
     @Column(nullable = false, length = 50)
@@ -25,21 +25,24 @@ public class User {
     @Column(nullable = false, length = 50)
     private String department;  //  학과
 
-    @Column(nullable = false, length = 20)
+    @Column(nullable = false, length = 50, unique = true)
     private String password;    //  비밀번호
 
-    @Column(nullable = false, length = 20)
+    @Column(nullable = false, length = 20, unique = true)
     private String phone;   //  전화번호
 
+    @Enumerated(EnumType.STRING)    //  열거형 타입을 문자열로 저장
+    @Column(nullable = false, length = 20)
     private UserRole role;  //  권한 확인
 
-    // 유저 id 를 제외한 나머지 생성자 작성
-    public User(String userId, String username, String department, String password, String phone) {
+
+    public User(String userId, String username, String department, String password, String phone, UserRole role) {
         this.userId = userId;
         this.username = username;
         this.department = department;
         this.password = password;
         this.phone = phone;
+        this.role = role;
     }
 
 
