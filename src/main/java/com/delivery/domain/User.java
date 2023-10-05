@@ -1,13 +1,14 @@
 package com.delivery.domain;
 
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 /*
  * 회원 정보 DB
- * 회원 id, 아이디(학번), 이름, 학과, 비밀번호, 전화번호
+ * 아이디(학번), 이름, 학과, 비밀번호, 전화번호
  */
 
 @Getter //  get 함수를 일괄적으로 만듦
@@ -25,7 +26,7 @@ public class User {
     @Column(nullable = false, length = 50)
     private String department;  //  학과
 
-    @Column(nullable = false, length = 50, unique = true)
+    @Column(nullable = false, length = 100, unique = true)
     private String password;    //  비밀번호
 
     @Column(nullable = false, length = 20, unique = true)
@@ -35,7 +36,7 @@ public class User {
     @Column(nullable = false, length = 20)
     private UserRole role;  //  권한 확인
 
-
+    @Builder
     public User(String userId, String username, String department, String password, String phone, UserRole role) {
         this.userId = userId;
         this.username = username;

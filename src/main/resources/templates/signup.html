@@ -10,7 +10,7 @@
   <div>
     <label for="userId">아이디(학번):</label>
     <input type="text" id="userId" name="userId" required>
-    <span th:text="${userExistsMsg}" style="color: red;"></span>
+    <span th:text="${error}" style="color: red;"></span>
   </div>
   <div>
     <label for="username">이름:</label>
