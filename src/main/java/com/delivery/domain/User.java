@@ -26,7 +26,7 @@ public class User {
     @Column(nullable = false, length = 50)
     private String department;  //  학과
 
-    @Column(nullable = false, length = 100, unique = true)
+    @Column(nullable = false, length = 20)
     private String password;    //  비밀번호
 
     @Column(nullable = false, length = 20, unique = true)

@@ -55,8 +55,11 @@ public class UserController {
             userService.registerUser(userDTO);
             return "redirect:/";
         } catch (IllegalArgumentException e) {
-            // 이미 존재하는 userId 예외 처리
-            model.addAttribute("error", "이미 존재하는 아이디입니다..");
+            if (e.getMessage().equals("이미 존재하는 아이디입니다..")) {
+                model.addAttribute("IdError", "이미 존재하는 아이디입니다.");
+            } else if (e.getMessage().equals("이미 존재하는 전화번호입니다..")) {
+                model.addAttribute("PhoneError", "이미 존재하는 전화번호입니다.");
+            }
             return "/signup"; // 다시 회원가입 페이지로 리다이렉트하고 에러 메시지를 표시합니다.
         }
     }

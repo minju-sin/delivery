@@ -10,7 +10,7 @@
   <div>
     <label for="userId">아이디(학번):</label>
     <input type="text" id="userId" name="userId" required>
-    <span th:text="${error}" style="color: red;"></span>
+    <span th:text="${IdError}" style="color: red;"></span>
   </div>
   <div>
     <label for="username">이름:</label>
@@ -27,6 +27,7 @@
   <div>
     <label for="phone">전화번호:</label>
     <input type="text" id="phone" name="phone" required>
+    <span th:text="${PhoneError}" style="color: red;"></span>
   </div>
   <button type="submit">가입</button>
 </form>
