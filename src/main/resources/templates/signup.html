@@ -4,8 +4,20 @@
   <meta charset="UTF-8">
   <title>회원가입</title>
 </head>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script>
+  //  주소 api 불러옴 -> 주소 검색 버튼 누르면 팝업창 생김
+  function openAddressSearch() {
+    new daum.Postcode({
+      oncomplete: function(data) {
+        // 선택한 주소를 가져와서 입력 필드를 업데이트 한다.
+        document.getElementById('address').value = data.address;
+      }
+    }).open();
+  }
+</script>
 <body>
-<h2>회원가입</h2>
+<h2>회원 가입</h2>
 <form method="post" action="/signup">
   <div>
     <label for="userId">아이디(학번):</label>
@@ -30,8 +42,13 @@
     <span th:text="${PhoneError}" style="color: red;"></span>
   </div>
   <div>
-    <label for="address">주소:</label>
-    <input type="address" id="address" name="address" required>
+    <label for="address">도로명 주소:</label>
+    <input type="text" id="address" name="address" required readonly>
+    <!-- 주소 검색 버튼 -->
+    <button type="button" id="searchAddressButton" onclick="openAddressSearch()">주소 검색</button>
+
+    <label for="address">상세 주소:</label>
+    <input type="text" id="detailsAddress" name="detailsAddress" required>
   </div>
   <button type="submit">가입</button>
 </form>

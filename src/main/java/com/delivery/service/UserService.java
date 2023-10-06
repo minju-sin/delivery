@@ -36,7 +36,8 @@ public class UserService {
             user.setPassword(userDTO.getPassword());
 
             user.setPhone(userDTO.getPhone());  //  전화번호 저장
-            user.setAddress(userDTO.getAddress());  //  주소 저장
+            user.setAddress(userDTO.getAddress());  //  도로명 주소 저장
+            user.setDetailsAddress(userDTO.getDetailsAddress());    //  상세 주소 저장
             user.setRole(UserRole.USER); // 사용자 권한으로 설정
 
             // UserRepository를 사용하여 User 엔티티를 데이터베이스에 저장

@@ -28,8 +28,11 @@
         <input type="text" id="phone" name="phone" th:value="${session.loggedInUser.phone}" readonly>
     </div>
     <div>
-        <label for="address">주소:</label>
+        <label for="address">도로명 주소:</label>
         <input type="text" id="address" name="address" th:value="${session.loggedInUser.address}">
+
+        <label for="detailsAddress">상세 주소:</label>
+        <input type="text" id="detailsAddress" name="detailsAddress" th:value="${session.loggedInUser.detailsAddress}">
     </div>
     <button th:type="submit">정보 수정</button>
 </form>

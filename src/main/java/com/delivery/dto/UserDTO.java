@@ -1,5 +1,6 @@
 package com.delivery.dto;
 
+import jakarta.persistence.Column;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,7 +17,8 @@ public class UserDTO {
     private String department;  // 학과
     private String password;    // 비밀번호
     private String phone;       // 전화번호
-    private String address;     //  주소
+    private String address;     //  도로명 주소
+    private String detailsAddress;  //  상세 주소
     private String role;        // 권한
 
 }
