@@ -22,23 +22,28 @@
   <div>
     <label for="userId">아이디(학번):</label>
     <input type="text" id="userId" name="userId" required>
+    <span style="color: blue;">아이디는 8자의 숫자만 입력 가능합니다.</span>
     <span th:text="${IdError}" style="color: red;"></span>
   </div>
   <div>
     <label for="username">이름:</label>
     <input type="text" id="username" name="username" required>
+    <span style="color: blue;">이름은 영어와 한글만 입력 가능합니다.</span>
   </div>
   <div>
     <label for="department">학과:</label>
     <input type="text" id="department" name="department" required>
+    <span style="color: blue;">학과는 한글만 입력 가능합니다.</span>
   </div>
   <div>
     <label for="password">비밀번호:</label>
     <input type="password" id="password" name="password" required>
+    <span style="color: blue;">비밀번호는 영어 대소문자, 숫자, 특수문자를 포함하여 8자 이상 20자 이하로 입력해야 합니다.</span>
   </div>
   <div>
-    <label for="phone">전화번호:</label>
+    <label for="phone">전화 번호:</label>
     <input type="text" id="phone" name="phone" required>
+    <span style="color: blue;">전화 번호는 숫자와 하이픈(-)만 입력 가능합니다</span>
     <span th:text="${PhoneError}" style="color: red;"></span>
   </div>
   <div>
@@ -48,7 +53,7 @@
     <button type="button" id="searchAddressButton" onclick="openAddressSearch()">주소 검색</button>
 
     <label for="address">상세 주소:</label>
-    <input type="text" id="detailsAddress" name="detailsAddress" required>
+    <input type="text" id="detailsAddress" name="detailsAddress">
   </div>
   <button type="submit">가입</button>
 </form>

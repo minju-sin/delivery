@@ -35,7 +35,7 @@ public class User {
     @Column(nullable = false, length = 50)
     private String address; //  도로명 주소
 
-    @Column(nullable = false, length = 50)
+    @Column(length = 50)
     private String detailsAddress; //  상세 주소
 
     @Enumerated(EnumType.STRING)    //  열거형 타입을 문자열로 저장
