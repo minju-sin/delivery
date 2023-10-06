@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  * 로그인 페이지 /login
  * 로그아웃 페이지 /logout
  * 내 정보 페이지 /user/profile
+ * 정보 수정 페이지 /user/edit
  * 관리자 페이지 /admin
  * */
 
@@ -119,5 +120,4 @@ public class UserController {
             return "redirect:/login";
         }
     }
-
 }

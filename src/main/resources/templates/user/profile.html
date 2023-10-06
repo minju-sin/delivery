@@ -5,13 +5,33 @@
     <title>내 정보</title>
 </head>
 <body>
-<p>내 정보를 볼 수 있다. 정보 수정 버튼을 누르면 정보 수정하는 페이지로 이동한다.</p>
-<p th:text="'아이디(학번): ' + ${session.loggedInUser.userId}"></p>
-<p th:text="'이름: ' + ${session.loggedInUser.username}"></p>
-<p th:text="'비밀번호: ' + ${session.loggedInUser.password}"></p>
-<p th:text="'학과: ' + ${session.loggedInUser.department}"></p>
-<p th:text="'전화번호: ' + ${session.loggedInUser.phone}"></p>
-<p th:text="'주소: ' + ${session.loggedInUser.address}"></p>
-<button th:type="submit" th:href="/user/edit">정보 수정</button>
+<p>내 정보를 볼 수 있기도 하고 수정도 할 수 있게 한다. 정보 수정 버튼을 누르면 수정된 정보가 db에 저장된다.</p>
+<form th:action="@{/user/update}" method="post">
+    <div>
+        <label for="userId">아이디(학번):</label>
+        <input type="text" id="userId" name="userId" th:value="${session.loggedInUser.userId}" readonly>
+    </div>
+    <div>
+        <label for="username">이름:</label>
+        <input type="text" id="username" name="username" th:value="${session.loggedInUser.username}" readonly>
+    </div>
+    <div>
+        <label for="password">비밀번호:</label>
+        <input type="password" id="password" name="password" th:value="${session.loggedInUser.password}">
+    </div>
+    <div>
+        <label for="department">학과:</label>
+        <input type="text" id="department" name="department" th:value="${session.loggedInUser.department}">
+    </div>
+    <div>
+        <label for="phone">전화번호:</label>
+        <input type="text" id="phone" name="phone" th:value="${session.loggedInUser.phone}" readonly>
+    </div>
+    <div>
+        <label for="address">주소:</label>
+        <input type="text" id="address" name="address" th:value="${session.loggedInUser.address}">
+    </div>
+    <button th:type="submit">정보 수정</button>
+</form>
 </body>
 </html>
