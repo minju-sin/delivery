@@ -32,6 +32,9 @@ public class User {
     @Column(nullable = false, length = 20, unique = true)
     private String phone;   //  전화번호
 
+    @Column(nullable = false, length = 50)
+    private String address; //  주소
+    
     @Enumerated(EnumType.STRING)    //  열거형 타입을 문자열로 저장
     @Column(nullable = false, length = 20)
     private UserRole role;  //  권한 확인

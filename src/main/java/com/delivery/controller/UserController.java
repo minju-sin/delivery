@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  * 회원가입 페이지 /signup
  * 로그인 페이지 /login
  * 로그아웃 페이지 /logout
+ * 내 정보 페이지 /user/myinfo
  * 관리자 페이지 /admin
  * */
 
@@ -33,7 +34,8 @@ public class UserController {
     @GetMapping("/")
     public String Home(HttpSession session) {
         // 세션에서 로그인 상태를 확인
-        boolean isLoggedIn = session.getAttribute("isLoggedIn") != null && (boolean) session.getAttribute("isLoggedIn");
+        boolean isLoggedIn =
+                session.getAttribute("isLoggedIn") != null && (boolean) session.getAttribute("isLoggedIn");
 
         return isLoggedIn ? "/home_logged_in" : "/home_not_logged_in";
     }
@@ -75,11 +77,13 @@ public class UserController {
     // 로그인 처리
     @PostMapping("/login")
     public String login(@RequestParam("userId") String userId,
-                        @RequestParam("password") String password, Model model) {
+                        @RequestParam("password") String password, Model model, HttpSession session) {
         User user = userRepository.findByUserId(userId);
 
         if (user != null && user.getPassword().equals(password)) {
             // 로그인 성공
+            session.setAttribute("isLoggedIn", true);
+            session.setAttribute("loggedInUser", user); //  사용자 객체를 세션에 저장
             return "/home_logged_in"; // 로그인 후 이동할 페이지
         } else {
             // 로그인 실패

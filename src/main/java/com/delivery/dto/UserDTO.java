@@ -16,6 +16,7 @@ public class UserDTO {
     private String department;  // 학과
     private String password;    // 비밀번호
     private String phone;       // 전화번호
+    private String address;     //  주소
     private String role;        // 권한
 
 }
