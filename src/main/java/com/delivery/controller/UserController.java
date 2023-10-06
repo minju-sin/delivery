@@ -120,4 +120,39 @@ public class UserController {
             return "redirect:/login";
         }
     }
+
+    // 내 정보 수정 처리
+    @PostMapping("/user/update")
+    public String updateUserProfile(@ModelAttribute UserDTO userDTO, HttpSession session, Model model) {
+        try {
+            // 세션에서 현재 로그인한 사용자 정보 가져오기
+            User loggedInUser = (User) session.getAttribute("loggedInUser");
+
+            if (loggedInUser != null) {
+                // 사용자 ID 가져오기
+                String userId = loggedInUser.getUserId();
+
+                // UserService를 사용하여 사용자 정보 업데이트
+                userService.updateUser(userId, userDTO);
+
+                // 업데이트 후 세션 정보 업데이트
+                loggedInUser.setPassword(userDTO.getPassword());
+                loggedInUser.setDepartment(userDTO.getDepartment());
+                loggedInUser.setAddress(userDTO.getAddress());
+                loggedInUser.setDetailsAddress(userDTO.getDetailsAddress());
+
+                // 정보 수정 성공하면 메인 페이지로 리디렉션
+                return "redirect:/";
+            } else {
+                // 로그인하지 않은 경우 로그인 페이지로 이동
+                return "redirect:/login";
+            }
+        } catch (IllegalArgumentException e) {
+            // 예외 처리: 유효성 검사 실패 등
+            // 에러 메시지를 모델에 추가하여 템플릿에서 사용 가능
+            model.addAttribute("error", e.getMessage());
+            return "/user/profile"; // 에러 처리 방법에 따라 수정
+        }
+    }
+
 }

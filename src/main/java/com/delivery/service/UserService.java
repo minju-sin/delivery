@@ -44,4 +44,23 @@ public class UserService {
             userRepository.save(user);
         }
     }
+
+    // 사용자 정보 업데이트 서비스
+    public void updateUser(String userId, UserDTO userDTO) {
+        // 사용자 ID를 기반으로 데이터베이스에서 사용자 정보 가져오기
+        User user = userRepository.findByUserId(userId);
+
+        if (user != null) {
+            // UserDTO에서 가져온 정보로 사용자 정보 업데이트
+            user.setPassword(userDTO.getPassword());
+            user.setDepartment(userDTO.getDepartment());
+            user.setAddress(userDTO.getAddress());
+            user.setDetailsAddress(userDTO.getDetailsAddress());
+
+            // 데이터베이스에 업데이트된 사용자 정보 저장
+            userRepository.save(user);
+        } else {
+            throw new IllegalArgumentException("사용자를 찾을 수 없습니다."); // 사용자를 찾을 수 없는 경우 예외 처리
+        }
+    }
 }

@@ -4,8 +4,20 @@
     <meta charset="UTF-8">
     <title>내 정보</title>
 </head>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script>
+    //  주소 api 불러옴 -> 주소 검색 버튼 누르면 팝업창 생김
+    function openAddressSearch() {
+        new daum.Postcode({
+            oncomplete: function(data) {
+                // 선택한 주소를 가져와서 입력 필드를 업데이트 한다.
+                document.getElementById('address').value = data.address;
+            }
+        }).open();
+    }
+</script>
 <body>
-<p>내 정보를 볼 수 있기도 하고 수정도 할 수 있게 한다. 정보 수정 버튼을 누르면 수정된 정보가 db에 저장된다.</p>
+<p>내 정보를 볼 수 있기도 하고 수정(비밀번호, 학과, 주소)도 할 수 있게 한다. 정보 수정 버튼을 누르면 수정된 정보가 db에 저장된다.</p>
 <form th:action="@{/user/update}" method="post">
     <div>
         <label for="userId">아이디(학번):</label>
@@ -30,7 +42,8 @@
     <div>
         <label for="address">도로명 주소:</label>
         <input type="text" id="address" name="address" th:value="${session.loggedInUser.address}">
-
+        <!-- 주소 검색 버튼 -->
+        <button type="button" id="searchAddressButton" onclick="openAddressSearch()">주소 검색</button>
         <label for="detailsAddress">상세 주소:</label>
         <input type="text" id="detailsAddress" name="detailsAddress" th:value="${session.loggedInUser.detailsAddress}">
     </div>
