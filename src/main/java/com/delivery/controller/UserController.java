@@ -109,13 +109,6 @@ public class UserController {
     @GetMapping("/user/info")
     public String MyInfo(){
         return "/myinfo";
-    }
-
-    // 관리자 페이지
-    @GetMapping("/admin")
-    public String Admin(){
-        return "/admin";
-    }
     */
 
 }
