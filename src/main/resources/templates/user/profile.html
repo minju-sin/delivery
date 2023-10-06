@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>내 정보</title>
+</head>
+<body>
+<p>내 정보를 볼 수 있다. 정보 수정 버튼을 누르면 정보 수정하는 페이지로 이동한다.</p>
+<p th:text="'아이디(학번): ' + ${session.loggedInUser.userId}"></p>
+<p th:text="'이름: ' + ${session.loggedInUser.username}"></p>
+<p th:text="'비밀번호: ' + ${session.loggedInUser.password}"></p>
+<p th:text="'학과: ' + ${session.loggedInUser.department}"></p>
+<p th:text="'전화번호: ' + ${session.loggedInUser.phone}"></p>
+<p th:text="'주소: ' + ${session.loggedInUser.address}"></p>
+<button th:type="submit" th:href="/user/edit">정보 수정</button>
+</body>
+</html>

@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  * 회원가입 페이지 /signup
  * 로그인 페이지 /login
  * 로그아웃 페이지 /logout
- * 내 정보 페이지 /user/myinfo
+ * 내 정보 페이지 /user/profile
  * 관리자 페이지 /admin
  * */
 
@@ -104,11 +104,20 @@ public class UserController {
         return "redirect:/"; // 로그아웃 후 메인 페이지로 리다이렉트
     }
 
-    /*
     // 내 정보 페이지
-    @GetMapping("/user/info")
-    public String MyInfo(){
-        return "/myinfo";
-    */
+    @GetMapping("/user/profile")
+    public String userProfile(HttpSession session, Model model) {
+        // 세션에서 로그인한 사용자 정보를 가져옴
+        User loggedInUser = (User) session.getAttribute("loggedInUser");
+
+        if (loggedInUser != null) {
+            // 사용자 정보를 모델에 추가하여 템플릿에서 사용
+            model.addAttribute("user", loggedInUser);
+            return "/user/profile"; // 내 정보를 표시하는 페이지로 이동
+        } else {
+            // 로그인하지 않은 경우 로그인 페이지로 이동
+            return "redirect:/login";
+        }
+    }
 
 }
