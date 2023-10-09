@@ -23,10 +23,10 @@ import org.springframework.web.bind.annotation.RequestParam;
  * 회원가입 페이지 /signup
  * 로그인 페이지 /login
  * 로그아웃 페이지 /logout
- * 내 정보 페이지 /user/profile
- * 정보 수정 페이지 /user/edit
- * 관리자 페이지 /admin
- * */
+ * 내 정보 페이지 /user/{userId}/profile
+ * 정보 수정 페이지 /user/{userId}/update
+ * 회원 탈퇴 /user/{userId}/delete
+ */
 
 @Controller // 해당 클래스가 컨트롤러임을 알리고 bean으로 등록하기 위함
 @RequiredArgsConstructor // 의존관계 관련해 필요한 어노테이션

@@ -16,6 +16,8 @@
         <p th:text="'안녕하세요! ' + ${session.loggedInUser.username}"></p>
         <a th:href="@{/logout}">로그아웃</a>
         <a th:href="@{'/user/' + ${session.loggedInUser.userId} + '/profile'}">내 정보</a>
+        <a th:href="@{/user/articles}">게시판</a>
+        <a href="">공지 사항</a>
     </div>
 
 </div>

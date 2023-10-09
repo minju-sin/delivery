@@ -9,8 +9,8 @@ import lombok.Setter;
 import java.sql.Timestamp;
 
 /*
- * 게시판 DB
- * 게시판Id, 아이디(학번), 제목, 본문, 날짜
+ * 게시글 DB
+ * 게시글Id, 아이디(학번), 제목, 본문, 날짜
  */
 
 @Getter //  get 함수를 일괄적으로 만듦
@@ -21,7 +21,7 @@ public class Article {
 
     @Id() //  primary key
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;  //  게시판 id
+    private Long id;  //  게시글 id
 
     @Setter
     @JoinColumn(name = "userId")    //  외래키 userId와 관련을 맺음

@@ -16,7 +16,7 @@ import java.sql.Timestamp;
 @Setter
 public class ArticleDTO {
 
-    private Long id;  //  게시판 id
+    private Long id;  //  게시글 id
     private User user; // 아이디(학번)
     private String title;    //  제목
     private String content;  //  본문
