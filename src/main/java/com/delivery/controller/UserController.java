@@ -174,4 +174,43 @@ public class UserController {
         }
     }
 
+    // 회원 탈퇴 페이지
+    @GetMapping("/user/{userId}/delete")
+    public String deleteUserPage(HttpSession session, Model model) {
+        // 사용자가 로그인했는지 확인
+        User loggedInUser = (User) session.getAttribute("loggedInUser");
+        if (loggedInUser != null) {
+            // 사용자 삭제 확인 페이지를 표시합니다.
+            model.addAttribute("user", loggedInUser);
+            return "user/delete";
+        } else {
+            // 로그인되지 않은 경우 로그인 페이지로 리디렉션합니다.
+            return "redirect:/login";
+        }
+    }
+
+    // 회원 탈퇴 처리
+    @PostMapping("/user/{userId}/delete")
+    public String deleteUser(HttpSession session, Model model) {
+        // 사용자가 로그인했는지 확인
+        User loggedInUser = (User) session.getAttribute("loggedInUser");
+
+        if (loggedInUser != null) {
+            try {
+                // UserService를 사용하여 사용자를 삭제합니다.
+                userService.deleteUser(loggedInUser.getUserId());
+
+                // 삭제 후 세션을 만료시키고 홈 페이지로 리디렉션합니다.
+                session.invalidate();
+                return "redirect:/";
+            } catch (IllegalArgumentException e) {
+                // 예외 처리: 사용자를 찾지 못하는 경우
+                model.addAttribute("error", e.getMessage());
+                return "/error"; // 에러 처리 방법에 따라 수정
+            }
+        } else {
+            // 로그인되지 않은 경우 로그인 페이지로 리디렉션합니다.
+            return "redirect:/login";
+        }
+    }
 }

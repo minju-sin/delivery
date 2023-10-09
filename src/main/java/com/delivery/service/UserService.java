@@ -63,4 +63,17 @@ public class UserService {
             throw new IllegalArgumentException("사용자를 찾을 수 없습니다."); // 사용자를 찾을 수 없는 경우 예외 처리
         }
     }
+
+    // 사용자 삭제 서비스
+    public void deleteUser(String userId) {
+        // UserRepository를 사용하여 사용자를 찾습니다.
+        User user = userRepository.findByUserId(userId);
+
+        if (user != null) {
+            // 사용자를 삭제합니다.
+            userRepository.delete(user);
+        } else {
+            throw new IllegalArgumentException("사용자를 찾을 수 없습니다.");
+        }
+    }
 }
