@@ -2,11 +2,10 @@
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>홈 (로그인 상태)</title>
+    <title>메인 페이지</title>
 </head>
 <body>
 <div>
-    <p>로그인 전 메인 화면</p>
     <div th:unless="${session.isLoggedIn}">
         <p>로그인 전 메인 화면</p>
         <a th:href="@{/login}">로그인</a>
