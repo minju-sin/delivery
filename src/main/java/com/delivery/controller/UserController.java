@@ -40,7 +40,7 @@ public class UserController {
         boolean isLoggedIn =
                 session.getAttribute("isLoggedIn") != null && (boolean) session.getAttribute("isLoggedIn");
 
-        return isLoggedIn ? "/home_logged_in" : "/home_not_logged_in";
+        return "/home";
     }
 
 
@@ -91,7 +91,7 @@ public class UserController {
             // 로그인 성공
             session.setAttribute("isLoggedIn", true);
             session.setAttribute("loggedInUser", user); //  사용자 객체를 세션에 저장
-            return "/home_logged_in"; // 로그인 후 이동할 페이지
+            return "redirect:/"; // 로그인 후 이동할 페이지
         } else {
             // 로그인 실패
             model.addAttribute("error", "아이디 또는 비밀번호가 잘못되었습니다.");
