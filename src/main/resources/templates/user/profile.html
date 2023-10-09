@@ -18,7 +18,7 @@
 </script>
 <body>
 <p>내 정보를 볼 수 있기도 하고 수정(비밀번호, 학과, 주소)도 할 수 있게 한다. 정보 수정 버튼을 누르면 수정된 정보가 db에 저장된다.</p>
-<form th:action="@{/user/update}" method="post">
+<form th:action="@{/user/{userId}/update}" method="post">
     <div>
         <label for="userId">아이디(학번):</label>
         <input type="text" id="userId" name="userId" th:value="${session.loggedInUser.userId}" readonly>

@@ -128,7 +128,7 @@ public class UserController {
     }
 
     // 내 정보 수정 처리
-    @PostMapping("/user/update")
+    @PostMapping("/user/{userId}/update")
     public String updateUserProfile(@ModelAttribute UserDTO userDTO, HttpSession session, Model model) {
         try {
             // 세션에서 현재 로그인한 사용자 정보 가져오기
