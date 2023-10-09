@@ -1,6 +1,7 @@
 package com.delivery.controller;
 
 import com.delivery.domain.User;
+import com.delivery.domain.UserRole;
 import com.delivery.dto.UserDTO;
 import com.delivery.repository.UserRepository;
 import com.delivery.service.UserService;
@@ -40,6 +41,18 @@ public class UserController {
         boolean isLoggedIn =
                 session.getAttribute("isLoggedIn") != null && (boolean) session.getAttribute("isLoggedIn");
 
+        if (isLoggedIn) {
+            // 세션에서 로그인한 사용자 정보를 가져오기
+            User loggedInUser = (User) session.getAttribute("loggedInUser");
+
+            // 사용자의 역할(role)을 확인 (예: "admin" 역할이 관리자를 나타내는 역할)
+            UserRole role = loggedInUser.getRole();
+
+            if (UserRole.ADMIN.equals(role)) {
+                // 관리자 역할인 경우 관리자 페이지로 이동
+                return "admin/home";
+            }
+        }
         return "/home";
     }
 

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>메인 페이지</title>
+</head>
+<body>
+<div>
+    <div th:unless="${session.isLoggedIn}">
+        <p>로그인 전 메인 화면</p>
+        <a th:href="@{/login}">로그인</a>
+        <a th:href="@{/signup}">회원가입</a>
+    </div>
+    <div th:if="${session.isLoggedIn}">
+        <p>로그인 성공 후 메인 화면</p>
+        <p th:text="'안녕하세요! ' + ${session.loggedInUser.username}"></p>
+        <a th:href="@{/logout}">로그아웃</a>
+        <a>회원 정보</a>
+        <a>공지 사항</a>
+    </div>
+
+</div>
+</body>
+</html>
