@@ -6,7 +6,7 @@
 </head>
 <body>
 <div>
-    <p>메인 홈페이지 입니다.</p>
+    <p>로그인 전 메인 화면</p>
     <div th:unless="${session.isLoggedIn}">
         <p>로그인 전 메인 화면</p>
         <a th:href="@{/login}">로그인</a>
