@@ -1,7 +1,8 @@
-package com.delivery.repository;
+package com.delivery.controller;
 
 import com.delivery.domain.User;
 import com.delivery.domain.UserRole;
+import com.delivery.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
