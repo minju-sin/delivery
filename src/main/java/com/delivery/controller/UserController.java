@@ -112,7 +112,7 @@ public class UserController {
     }
 
     // 내 정보 페이지
-    @GetMapping("/user/profile")
+    @GetMapping("/user/{userId}/profile")
     public String userProfile(HttpSession session, Model model) {
         // 세션에서 로그인한 사용자 정보를 가져옴
         User loggedInUser = (User) session.getAttribute("loggedInUser");

@@ -15,7 +15,7 @@
         <p>로그인 성공 후 메인 화면</p>
         <p th:text="'안녕하세요! ' + ${session.loggedInUser.username}"></p>
         <a th:href="@{/logout}">로그아웃</a>
-        <a th:href="@{/user/profile}">내 정보</a>
+        <a th:href="@{'/user/' + ${session.loggedInUser.userId} + '/profile'}">내 정보</a>
     </div>
 
 </div>
