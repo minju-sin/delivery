@@ -14,6 +14,7 @@
         <th>이름</th>
         <th>학과</th>
         <th>전화번호</th>
+        <th>주소</th>
     </tr>
     </thead>
     <tbody>
@@ -23,6 +24,13 @@
         <td th:text="${user.username}"></td>
         <td th:text="${user.department}"></td>
         <td th:text="${user.phone}"></td>
+        <td th:text="${user.address} + ${user.detailsAddress}"></td>
+        <td>
+            <form th:action="@{/admin/delete}" method="post">
+                <input type="hidden" name="userId" th:value="${user.userId}" />
+                <button type="submit">삭제</button>
+            </form>
+        </td>
     </tr>
     </tbody>
 </table>
