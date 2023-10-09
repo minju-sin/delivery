@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>사용자 관리</title>
+</head>
+<body>
+<h2>사용자 관리 - 모든 사용자 정보 보여줌, 관리자가 사용자 삭제도 가능하도록 만든다.</h2>
+
+<table>
+    <thead>
+    <tr>
+        <th>아이디</th>
+        <th>이름</th>
+        <th>학과</th>
+        <th>전화번호</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    <tr th:each="user : ${userList}">
+        <td th:text="${user.userId}"></td>
+        <td th:text="${user.username}"></td>
+        <td th:text="${user.department}"></td>
+        <td th:text="${user.phone}"></td>
+    </tr>
+    </tbody>
+</table>
+
+<a href="/">홈으로 돌아가기</a>
+</body>
+</html>
